@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "pqD32bqeW/l1z3dwKPw2pX1vLqL9VnCxYpN2Fj8lujg=",
+  "Source": "drink-finder-restapi",
+  "BasePath": "_content/drink-finder-restapi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
