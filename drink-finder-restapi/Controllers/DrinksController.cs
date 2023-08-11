@@ -1,7 +1,10 @@
-﻿using drink_finder_restapi.Domain.Models;
+﻿using AutoMapper;
+using drink_finder_restapi.Domain.Models;
 using drink_finder_restapi.Domain.Services;
+using drink_finder_restapi.Resources;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using drink_finder_restapi.Extensions;
 
 namespace drink_finder_restapi.Controllers
 {
@@ -11,17 +14,37 @@ namespace drink_finder_restapi.Controllers
     {
 
         private readonly IDrinkService _drinkService;
+        private readonly IMapper _mapper;
 
-        public DrinksController(IDrinkService drinkService)
+        public DrinksController(IDrinkService drinkService, IMapper mapper)
         {
             _drinkService = drinkService;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Drink>> GetAllAsync()
+        public async Task<IEnumerable<DrinkResource>> GetAllAsync()
         {
             var drinks = await _drinkService.ListAsync();
-            return drinks;
+            var resources = _mapper.Map<IEnumerable<Drink>, IEnumerable<DrinkResource>>(drinks);
+            return resources;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostAsync([FromBody] SaveDrinkResource resource)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.GetErrorMessages());
+            }
+            var drink = _mapper.Map<SaveDrinkResource, Drink>(resource);
+            var result = await _drinkService.SaveAsync(drink);
+            if(!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            var drinkResource = _mapper.Map<Drink, DrinkResource>(result._drink);
+            return Ok(drinkResource);
         }
     }
 }

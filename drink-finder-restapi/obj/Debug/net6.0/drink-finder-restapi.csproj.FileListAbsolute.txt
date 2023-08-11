@@ -52,3 +52,5 @@ C:\GIT\Drink-Finder\drink-finder-restapi\obj\Debug\net6.0\drink-finder-restapi.g
 C:\GIT\Drink-Finder\drink-finder-restapi\obj\Debug\net6.0\ref\drink-finder-restapi.dll
 C:\GIT\Drink-Finder\drink-finder-restapi\bin\Debug\net6.0\MySqlConnector.dll
 C:\GIT\Drink-Finder\drink-finder-restapi\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\GIT\Drink-Finder\drink-finder-restapi\bin\Debug\net6.0\AutoMapper.dll
+C:\GIT\Drink-Finder\drink-finder-restapi\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

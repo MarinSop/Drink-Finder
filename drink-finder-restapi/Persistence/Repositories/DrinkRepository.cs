@@ -15,5 +15,10 @@ namespace drink_finder_restapi.Persistence.Repositories
         {
             return await _context.drinks.ToListAsync();
         }
+
+        public async Task AddAsync(Drink drink)
+        {
+            await _context.drinks.AddAsync(drink);
+        }
     }
 }

@@ -3,6 +3,7 @@ using drink_finder_restapi.Domain.Services;
 using drink_finder_restapi.Persistence.Contexts;
 using drink_finder_restapi.Persistence.Repositories;
 using drink_finder_restapi.Services;
+using AutoMapper;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IDrinkRepository, DrinkRepository>();
 builder.Services.AddScoped<IDrinkService, DrinkService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 

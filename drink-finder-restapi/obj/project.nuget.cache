@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "QvpUkyz8UkFWDwQQdKSfeRmfu1DEUZaX/EOnrC1wW7lLSN35hgSBxETdTTXGgigCfIzVtn8j/wIJdTllhTc6DA==",
+  "dgSpecHash": "TyJ/ASCXxQ/Dii5tcOvQy1vyX0H0JP37jZ8xiknkzUJBn7jIlEx2V6OH6pWweL2zlnwTs6Jp/W0JWfYaDgYjdw==",
   "success": true,
   "projectFilePath": "C:\\GIT\\Drink-Finder\\drink-finder-restapi\\drink-finder-restapi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Marin\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Marin\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Marin\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\Marin\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Marin\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.9\\microsoft.entityframeworkcore.7.0.9.nupkg.sha512",
     "C:\\Users\\Marin\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.9\\microsoft.entityframeworkcore.abstractions.7.0.9.nupkg.sha512",
     "C:\\Users\\Marin\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.9\\microsoft.entityframeworkcore.analyzers.7.0.9.nupkg.sha512",
