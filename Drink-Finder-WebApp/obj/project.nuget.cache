@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Rfja1zdQpY648qTjvBBt7UGxeAt2G3SdWrUoQ1OwqxwpO8zyiwkdEerMckNc9FJPrk5IgWElleL5aMqEeRelHQ==",
+  "success": true,
+  "projectFilePath": "C:\\GIT\\Drink-Finder\\Drink-Finder-WebApp\\Drink-Finder-WebApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Marin\\.nuget\\packages\\axios\\0.16.2\\axios.0.16.2.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -27,6 +27,14 @@ namespace drink_finder_restapi.Controllers
         {
             var drinks = await _drinkService.ListAsync();
             var resources = _mapper.Map<IEnumerable<Drink>, IEnumerable<DrinkResource>>(drinks);
+            return resources;        
+        }
+
+        [HttpGet("establishments/{establishmentId}")]
+        public async Task<IEnumerable<DrinkResource>> GetAllDrinksInEstablishmentAsync(int establishmentId)
+        {
+            var drinks = await _drinkService.GetAllDrinksInEstablishmentAsync(establishmentId);
+            var resources = _mapper.Map<IEnumerable<Drink>, IEnumerable<DrinkResource>>(drinks);
             return resources;
         }
 

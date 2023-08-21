@@ -2,6 +2,7 @@
 using drink_finder_restapi.Domain.Models;
 using drink_finder_restapi.Domain.Repositories;
 using drink_finder_restapi.Domain.Services.Communication;
+using drink_finder_restapi.Resources;
 
 namespace drink_finder_restapi.Services
 {
@@ -18,6 +19,11 @@ namespace drink_finder_restapi.Services
         public async Task<IEnumerable<Drink>> ListAsync()
         {
             return await _drinkRepository.ListAsync();
+        }
+
+        public async Task<IEnumerable<Drink>> GetAllDrinksInEstablishmentAsync(int establishmentId)
+        {
+            return await _drinkRepository.GetAllDrinksInEstablishmentAsync(establishmentId);
         }
 
         public async Task<SaveDrinkResponse> SaveAsync(Drink drink)

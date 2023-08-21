@@ -1,0 +1,77 @@
+﻿@page
+@using Drink_Finder_WebApp.Models;
+@model Drink_Finder_WebApp.Pages.IndexModel
+@{
+    <div>
+    <form method="post">
+        <input type="text"  name="query"/>
+        <select name="city-filter">
+            <option selected value="">No city filter</option>
+            @foreach(City city in Model.cities)
+            {
+                if(city.name == Request.Query["cityFilter"])
+                {
+                    <option selected value="@city.name">@city.name</option>
+                }
+                else
+                {
+                    <option value="@city.name">@city.name</option>
+                }
+            }
+        </select>
+        <input type="submit" value="Search"/>
+    </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if(Model.establishments != null)
+            {
+                @foreach(Establishment establishment in Model.establishments)
+                {
+                    <tr>
+                        <td>@establishment.name</td>
+                        <td>@establishment.city.name</td>
+                        <td>@establishment.address</td>
+                        <td>
+                            <a href="/drinks/@establishment.id">Show drink list</a>
+                        </td>
+                    </tr>                    
+                }                    
+                }
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <a href="/?query=@Request.Query["query"]&cityFilter=@Request.Query["cityfilter"]&pageNumber=1">First</a>
+
+            @if (Model.pgNum - 2 > 0)
+            {
+                <a href="/?query=@Request.Query["query"]&cityFilter=@Request.Query["cityfilter"]&pageNumber=@(Model.pgNum-2)">@(Model.pgNum-2)</a>
+            }
+            @if(Model.pgNum - 1 > 0)
+            {
+                <a href="/?query=@Request.Query["query"]&cityFilter=@Request.Query["cityfilter"]&pageNumber=@(Model.pgNum-1)">@(Model.pgNum-1)</a>
+            }
+
+            <a href="/?query=@Request.Query["query"]&cityFilter=@Request.Query["cityfilter"]&pageNumber=@Model.pgNum">@Model.pgNum</a>
+
+            @if (Model.pgNum + 1 <= Model.totalPages)
+            {
+                <a href="/?query=@Request.Query["query"]&cityFilter=@Request.Query["cityfilter"]&pageNumber=@(Model.pgNum+1)">@(Model.pgNum + 1)</a>
+            }
+            @if (Model.pgNum + 2 <= Model.totalPages)
+            {
+                <a href="/?query=@Request.Query["query"]&cityFilter=@Request.Query["cityfilter"]&pageNumber=@(Model.pgNum+2)">@(Model.pgNum + 2)</a>
+            }
+
+            <a href="/?query=@Request.Query["query"]&cityFilter=@Request.Query["cityfilter"]&pageNumber=@Model.totalPages">Last</a>
+        </div>
+    </div>
+}

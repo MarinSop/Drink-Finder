@@ -2,6 +2,7 @@
 using drink_finder_restapi.Domain.Models;
 using System;
 using drink_finder_restapi.Persistence.Contexts;
+using drink_finder_restapi.Resources;
 
 namespace drink_finder_restapi.Persistence.Repositories
 {
@@ -14,6 +15,11 @@ namespace drink_finder_restapi.Persistence.Repositories
         public async Task<IEnumerable<Drink>> ListAsync()
         {
             return await _context.drinks.ToListAsync();
+        }
+
+        public async Task<IEnumerable<Drink>> GetAllDrinksInEstablishmentAsync(int establishmentId)
+        {
+            return await _context.establishmentDrinks.Where(ed => ed.EstablishemntId == establishmentId).Select(d => d.drink).ToListAsync();
         }
 
         public async Task AddAsync(Drink drink)

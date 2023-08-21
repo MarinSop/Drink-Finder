@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Drink-Finder-WebApp.props" />
+</Project>
