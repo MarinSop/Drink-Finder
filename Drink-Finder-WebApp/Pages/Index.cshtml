@@ -2,7 +2,42 @@
 @using Drink_Finder_WebApp.Models;
 @model Drink_Finder_WebApp.Pages.IndexModel
 @{
+
     <div>
+    @{
+            var queryParam = Request.Query["query"];
+            var cityFilterParam = Request.Query["cityFilter"];
+            var sortByParam = Request.Query["sortBy"];
+            var sortParam = Request.Query["sort"];
+            var pgNumParam = Request.Query["pageNumber"];
+
+            var urlParams = new List<string>();
+            var queryFilterParams = "";
+
+            if (!string.IsNullOrWhiteSpace(queryParam))
+            {
+                urlParams.Add($"query={queryParam}");
+                queryFilterParams += "&query=" + queryParam;
+            }
+            if (!string.IsNullOrWhiteSpace(cityFilterParam))
+            {
+                urlParams.Add($"cityFilter={cityFilterParam}");
+                queryFilterParams += "&cityFilter=" + cityFilterParam;
+            }
+
+            if (!string.IsNullOrWhiteSpace(sortByParam))
+            {
+                urlParams.Add($"sortBy={sortByParam}");
+            }
+
+            if (!string.IsNullOrWhiteSpace(sortParam))
+            {
+                urlParams.Add($"sort={sortParam}");
+            }
+
+            var urlParamsString = string.Join("&", urlParams);
+    }
+
     <form method="post">
         <input type="text"  name="query"/>
         <select name="city-filter">
@@ -24,9 +59,36 @@
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>City</th>
-                    <th>Address</th>
+                    <th>
+                        @if (sortByParam == "name" && sortParam == "asc")
+                        {
+                            <a href="/?sortBy=name&sort=desc@(queryFilterParams)&pageNumber=@Model.pgNum">Name</a>
+                        }
+                        else
+                        {
+                            <a href="/?sortBy=name&sort=asc@(queryFilterParams)&pageNumber=@Model.pgNum">Name</a>
+                        }
+                    </th>
+                    <th>
+                        @if (sortByParam == "city" && sortParam == "asc")
+                        {
+                            <a href="/?sortBy=city&sort=desc@(queryFilterParams)&pageNumber=@Model.pgNum">City</a>
+                        }
+                        else
+                        {
+                            <a href="/?sortBy=city&sort=asc@(queryFilterParams)&pageNumber=@Model.pgNum">City</a>
+                        }
+                    </th>
+                    <th>
+                        @if (sortByParam == "address" && sortParam == "asc")
+                        {
+                            <a href="/?sortBy=address&sort=desc@(queryFilterParams)&pageNumber=@Model.pgNum">Address</a>
+                        }
+                        else
+                        {
+                            <a href="/?sortBy=address&sort=asc@(queryFilterParams)&pageNumber=@Model.pgNum">Address</a>
+                        }
+                    </th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -49,29 +111,29 @@
         </table>
 
         <div class="pagination">
-            <a href="/?query=@Request.Query["query"]&cityFilter=@Request.Query["cityfilter"]&pageNumber=1">First</a>
+            <a href="/?@urlParamsString&pageNumber=1">First</a>
 
             @if (Model.pgNum - 2 > 0)
             {
-                <a href="/?query=@Request.Query["query"]&cityFilter=@Request.Query["cityfilter"]&pageNumber=@(Model.pgNum-2)">@(Model.pgNum-2)</a>
+                <a href="/?@urlParamsString&pageNumber=@(Model.pgNum-2)">@(Model.pgNum - 2)</a>
             }
             @if(Model.pgNum - 1 > 0)
             {
-                <a href="/?query=@Request.Query["query"]&cityFilter=@Request.Query["cityfilter"]&pageNumber=@(Model.pgNum-1)">@(Model.pgNum-1)</a>
+                <a href="/?@urlParamsString&pageNumber=@(Model.pgNum-1)">@(Model.pgNum - 1)</a>
             }
 
-            <a href="/?query=@Request.Query["query"]&cityFilter=@Request.Query["cityfilter"]&pageNumber=@Model.pgNum">@Model.pgNum</a>
+            <a href="/?@urlParamsString&pageNumber=@Model.pgNum">@Model.pgNum</a>
 
             @if (Model.pgNum + 1 <= Model.totalPages)
             {
-                <a href="/?query=@Request.Query["query"]&cityFilter=@Request.Query["cityfilter"]&pageNumber=@(Model.pgNum+1)">@(Model.pgNum + 1)</a>
+                <a href="/?@urlParamsString&pageNumber=@(Model.pgNum+1)">@(Model.pgNum + 1)</a>
             }
             @if (Model.pgNum + 2 <= Model.totalPages)
             {
-                <a href="/?query=@Request.Query["query"]&cityFilter=@Request.Query["cityfilter"]&pageNumber=@(Model.pgNum+2)">@(Model.pgNum + 2)</a>
+                <a href="/?@urlParamsString&pageNumber=@(Model.pgNum+2)">@(Model.pgNum + 2)</a>
             }
 
-            <a href="/?query=@Request.Query["query"]&cityFilter=@Request.Query["cityfilter"]&pageNumber=@Model.totalPages">Last</a>
+            <a href="/?@urlParamsString&pageNumber=@Model.totalPages">Last</a>
         </div>
     </div>
 }

@@ -57,7 +57,7 @@ namespace drink_finder_restapi.Persistence.Repositories
             return await establishments.ToListAsync();
         }
 
-        public async Task<IEnumerable<Establishment>> pageSearchAsync(int pageNumber, int pageSize, string query, string cityFilter, string sortBy)
+        public async Task<IEnumerable<Establishment>> pageSearchAsync(int pageNumber, int pageSize, string query, string cityFilter, string sortBy, string sort)
         {
             var establishments = from e in _context.establishments select e;
             establishments = _context.establishments
@@ -76,13 +76,13 @@ namespace drink_finder_restapi.Persistence.Repositories
             switch (sortBy)
             {
                 case "name":
-                    establishments = establishments.OrderBy(e => e.Name);
+                    establishments = sort == "asc" ? establishments.OrderBy(e => e.Name) : establishments.OrderByDescending(e => e.Name);
                     break;
                 case "city":
-                    establishments = establishments.OrderBy(e => e.City.Name);
+                    establishments = sort == "asc" ? establishments.OrderBy(e => e.City.Name) : establishments.OrderByDescending(e => e.City.Name);
                     break;
                 case "address":
-                    establishments = establishments.OrderBy(e => e.Address);
+                    establishments = sort == "asc" ? establishments.OrderBy(e => e.Address) : establishments.OrderByDescending(e => e.Address);
                     break;
                 default:
                     break;

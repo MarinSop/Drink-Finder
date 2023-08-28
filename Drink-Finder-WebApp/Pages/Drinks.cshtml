@@ -1,0 +1,106 @@
+﻿@page "/drinks/{establishmentId:int}"
+@model Drink_Finder_WebApp.Pages.DrinksModel
+@{
+
+
+    <div> 
+        @{
+            var categoryParam = Request.Query["category"];
+            var sortByParam = Request.Query["sortBy"];
+            var sortParam = Request.Query["sort"];
+
+            var urlParams = new List<string>();
+            string categoryParamUrl = "";
+
+            if (!string.IsNullOrWhiteSpace(categoryParam))
+            {
+                urlParams.Add($"category={categoryParam}");
+                categoryParamUrl = "category=" + categoryParam; 
+            }
+
+            if (!string.IsNullOrWhiteSpace(sortByParam))
+            {
+                urlParams.Add($"sortBy={sortByParam}");
+            }
+
+            if (!string.IsNullOrWhiteSpace(sortParam))
+            {
+                urlParams.Add($"sort={sortParam}");
+            }
+
+            var urlParamsString = string.Join("&", urlParams);
+
+
+        }
+        <div class="categories-select">
+            <a class="category-button" href="@Model.establishmentId">All</a>
+            @foreach(var category in Model.categories)
+            {
+                <a class="category-button" href="@Model.establishmentId?category=@category.id">@category.name</a>
+            }
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        @if(sortByParam == "name" && sortParam == "asc")
+                        {
+                            <a href="/drinks/@Model.establishmentId?sortBy=name&sort=desc&@categoryParamUrl&pageNumber=@Model.pgNum">Name</a>
+                        }
+                        else
+                        {
+                        <a href="/drinks/@Model.establishmentId?sortBy=name&sort=asc&@categoryParamUrl&pageNumber=@Model.pgNum">Name</a>
+                        }
+                    </th>
+                    <th>
+                        @if(sortByParam == "volume" && sortParam == "asc")
+                        {
+                        <a href="/drinks/@Model.establishmentId?sortBy=volume&sort=desc&@categoryParamUrl&pageNumber=@Model.pgNum">Volume</a>
+                        }
+                        else
+                        {
+                        <a href="/drinks/@Model.establishmentId?sortBy=volume&sort=asc&@categoryParamUrl&pageNumber=@Model.pgNum">Volume</a>
+                        }
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.drinkList != null)
+                {
+                    @foreach (var drink in Model.drinkList)
+                    {
+                        <tr>
+                            <td>@drink.name</td>
+                            <td>@drink.volume</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <div class="pagination">
+            <a href="/drinks/@Model.establishmentId?@urlParamsString">First</a>
+
+            @if (Model.pgNum - 2 > 0)
+            {
+                <a href="/drinks/@Model.establishmentId?@urlParamsString&pageNumber=@(Model.pgNum-2)">@(Model.pgNum - 2)</a>
+            }
+            @if (Model.pgNum - 1 > 0)
+            {
+                <a href="/drinks/@Model.establishmentId?@urlParamsString&pageNumber=@(Model.pgNum-1)">@(Model.pgNum - 1)</a>
+            }
+
+            <a href="/drinks/@Model.establishmentId?@urlParamsString&pageNumber=@Model.pgNum">@Model.pgNum</a>
+
+            @if (Model.pgNum + 1 <= Model.totalPages)
+            {
+                <a href="/drinks/@Model.establishmentId?@urlParamsString&pageNumber=@(Model.pgNum+1)">@(Model.pgNum + 1)</a>
+            }
+            @if (Model.pgNum + 2 <= Model.totalPages)
+            {
+                <a href="/drinks/@Model.establishmentId?@urlParamsString&pageNumber=@(Model.pgNum+2)">@(Model.pgNum + 2)</a>
+            }
+
+            <a href="/drinks/@Model.establishmentId?@urlParamsString&pageNumber=@Model.totalPages">Last</a>
+        </div>
+    </div>
+}

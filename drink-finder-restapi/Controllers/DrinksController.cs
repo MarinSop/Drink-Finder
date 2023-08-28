@@ -5,6 +5,7 @@ using drink_finder_restapi.Resources;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using drink_finder_restapi.Extensions;
+using drink_finder_restapi.Services;
 
 namespace drink_finder_restapi.Controllers
 {
@@ -53,6 +54,12 @@ namespace drink_finder_restapi.Controllers
             }
             var drinkResource = _mapper.Map<Drink, DrinkResource>(result._drink);
             return Ok(drinkResource);
+        }
+
+        [HttpGet("establishments/{establishmentId}/page")]
+        public async Task<PageResource<DrinkResource>> pageGetAllAsync(int establishmentId, int pageNumber = 1, int pageSize = 10, int category = -1, string sortBy = "name", string sort="asc")
+        {
+            return await _drinkService.pageGetAllAsync(establishmentId ,pageNumber, pageSize, category, sortBy, sort);
         }
     }
 }

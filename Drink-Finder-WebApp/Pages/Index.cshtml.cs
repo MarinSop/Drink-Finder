@@ -22,12 +22,12 @@ namespace Drink_Finder_WebApp.Pages
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task OnGet(int pageNumber = 1, int pageSize = 1, string query = "", string cityFilter = "", string sortBy = "name")
+        public async Task OnGet(int pageNumber = 1, int pageSize = 1, string query = "", string cityFilter = "", string sortBy = "name", string sort = "asc")
         {
             pgNum = pageNumber;
             pgSize = pageSize;
             var httpClient = _httpClientFactory.CreateClient();
-            string apiUrl = "https://localhost:7082/api/establishments/page-search?" + "pageNumber=" + pageNumber + "&pageSize=" + pageSize + "&sortBy=" + sortBy;
+            string apiUrl = "https://localhost:7082/api/establishments/page-search?" + "pageNumber=" + pageNumber + "&pageSize=" + pageSize + "&sortBy=" + sortBy + "&sort=" + sort;
             apiUrl = string.IsNullOrEmpty(query) ? apiUrl : apiUrl + "&query=" + query;
             apiUrl = string.IsNullOrEmpty(cityFilter) ? apiUrl : apiUrl + "&cityFilter=" + cityFilter;
             HttpResponseMessage response = await httpClient.GetAsync(apiUrl);

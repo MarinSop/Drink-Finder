@@ -37,9 +37,9 @@ namespace drink_finder_restapi.Controllers
         }
 
         [HttpGet("page-search")]
-        public async Task<PageResource<EstablishmentResource>> pageSearchAsync(int pageNumber, int pageSize, string? query = "", string? cityFilter = "", string sortBy = "name")
+        public async Task<PageResource<EstablishmentResource>> pageSearchAsync(int pageNumber = 1, int pageSize = 10, string? query = "", string? cityFilter = "", string sortBy = "name", string sort = "asc")
         {
-            return await _establishmentService.pageSearchAsync(pageNumber,pageSize,query,cityFilter,sortBy);
+            return await _establishmentService.pageSearchAsync(pageNumber,pageSize,query,cityFilter,sortBy,sort);
         }
 
     }

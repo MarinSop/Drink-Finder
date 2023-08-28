@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\GIT\Drink-Finder\Drink-Finder-WebApp
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/GIT/Drink-Finder/Drink-Finder-WebApp/Pages/Drinks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRHJpbmtzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/GIT/Drink-Finder/Drink-Finder-WebApp/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

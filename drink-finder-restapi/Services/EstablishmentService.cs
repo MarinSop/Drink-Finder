@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿ using AutoMapper;
 using drink_finder_restapi.Domain.Models;
 using drink_finder_restapi.Domain.Repositories;
 using drink_finder_restapi.Domain.Services;
@@ -28,9 +28,9 @@ namespace drink_finder_restapi.Services
             return await _establishmentRepository.searchAsync(query, cityFilter, sortBy);
         }
 
-        public async Task<PageResource<EstablishmentResource>> pageSearchAsync(int pageNumber, int pageSize, string query, string cityFilter, string sortBy)
+        public async Task<PageResource<EstablishmentResource>> pageSearchAsync(int pageNumber, int pageSize, string query, string cityFilter, string sortBy, string sort)
         {
-            var establishments = await _establishmentRepository.pageSearchAsync(pageNumber, pageSize, query, cityFilter, sortBy);
+            var establishments = await _establishmentRepository.pageSearchAsync(pageNumber, pageSize, query, cityFilter, sortBy, sort);
             int totalItems = establishments.Count();
             establishments = establishments.Skip((pageNumber - 1) * pageSize).Take(pageSize);
             var resources = _mapper.Map<IEnumerable<Establishment>, IEnumerable<EstablishmentResource>>(establishments);
