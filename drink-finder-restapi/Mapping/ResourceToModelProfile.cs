@@ -9,6 +9,8 @@ namespace drink_finder_restapi.Mapping
         public ResourceToModelProfile() 
         {
             CreateMap<SaveDrinkResource, Drink>();
+            CreateMap<SaveEstablishmentResource, Establishment>();
+            CreateMap<SaveEstablishmentDrinkResource, EstablishmentDrink>();
         }
     }
 }

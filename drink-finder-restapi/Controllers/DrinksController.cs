@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using drink_finder_restapi.Extensions;
 using drink_finder_restapi.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace drink_finder_restapi.Controllers
 {

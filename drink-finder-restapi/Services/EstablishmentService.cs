@@ -30,7 +30,7 @@ namespace drink_finder_restapi.Services
 
         public async Task<PageResource<EstablishmentResource>> pageSearchAsync(int pageNumber, int pageSize, string query, string cityFilter, string sortBy, string sort)
         {
-            var establishments = await _establishmentRepository.pageSearchAsync(pageNumber, pageSize, query, cityFilter, sortBy, sort);
+            var establishments = await _establishmentRepository.pageSearchAsync(query, cityFilter, sortBy, sort);
             int totalItems = establishments.Count();
             establishments = establishments.Skip((pageNumber - 1) * pageSize).Take(pageSize);
             var resources = _mapper.Map<IEnumerable<Establishment>, IEnumerable<EstablishmentResource>>(establishments);

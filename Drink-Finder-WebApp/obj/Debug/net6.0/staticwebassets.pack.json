@@ -5,6 +5,38 @@
       "PackagePath": "staticwebassets\\Drink-Finder-WebApp.bundle.scp.css"
     },
     {
+      "Id": "C:\\GIT\\Drink-Finder\\Drink-Finder-WebApp\\wwwroot\\css\\addestablishment.css",
+      "PackagePath": "staticwebassets\\css\\addestablishment.css"
+    },
+    {
+      "Id": "C:\\GIT\\Drink-Finder\\Drink-Finder-WebApp\\wwwroot\\css\\drinks.css",
+      "PackagePath": "staticwebassets\\css\\drinks.css"
+    },
+    {
+      "Id": "C:\\GIT\\Drink-Finder\\Drink-Finder-WebApp\\wwwroot\\css\\editdrinks.css",
+      "PackagePath": "staticwebassets\\css\\editdrinks.css"
+    },
+    {
+      "Id": "C:\\GIT\\Drink-Finder\\Drink-Finder-WebApp\\wwwroot\\css\\editestablishment.css",
+      "PackagePath": "staticwebassets\\css\\editestablishment.css"
+    },
+    {
+      "Id": "C:\\GIT\\Drink-Finder\\Drink-Finder-WebApp\\wwwroot\\css\\establishments.css",
+      "PackagePath": "staticwebassets\\css\\establishments.css"
+    },
+    {
+      "Id": "C:\\GIT\\Drink-Finder\\Drink-Finder-WebApp\\wwwroot\\css\\index.css",
+      "PackagePath": "staticwebassets\\css\\index.css"
+    },
+    {
+      "Id": "C:\\GIT\\Drink-Finder\\Drink-Finder-WebApp\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
+      "Id": "C:\\GIT\\Drink-Finder\\Drink-Finder-WebApp\\wwwroot\\css\\register.css",
+      "PackagePath": "staticwebassets\\css\\register.css"
+    },
+    {
       "Id": "C:\\GIT\\Drink-Finder\\Drink-Finder-WebApp\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

@@ -1,0 +1,21 @@
+﻿@page
+@model RegisterModel
+@{
+    @if (!string.IsNullOrEmpty(Request.Query["error"]))
+    {
+        <div class="error-message">
+            <span>@Request.Query["error"]</span>
+        </div>
+    }
+    <div class="register-container">
+    <h1>Register</h1>
+        <form method="post" class="register-form">
+        <input type="text" name="username" placeholder="Enter username" required>
+        <input type="password" name="password" placeholder="Enter password" required>
+        <input type="submit" value="Register">
+    </form>
+    </div>
+    @section Styles{
+        <link rel="stylesheet" href="~/css/register.css" asp-append-version="true" />
+    }
+}

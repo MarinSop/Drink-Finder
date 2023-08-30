@@ -83,9 +83,14 @@ namespace drink_finder_restapi.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CityId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("establishments");
                 });
@@ -110,6 +115,26 @@ namespace drink_finder_restapi.Migrations
                     b.ToTable("establishmentDrinks");
                 });
 
+            modelBuilder.Entity("drink_finder_restapi.Domain.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("users");
+                });
+
             modelBuilder.Entity("drink_finder_restapi.Domain.Models.Drink", b =>
                 {
                     b.HasOne("drink_finder_restapi.Domain.Models.DrinkCategory", "drinkCategory")
@@ -129,7 +154,15 @@ namespace drink_finder_restapi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("drink_finder_restapi.Domain.Models.User", "User")
+                        .WithMany("establishments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("City");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("drink_finder_restapi.Domain.Models.EstablishmentDrink", b =>
@@ -169,6 +202,11 @@ namespace drink_finder_restapi.Migrations
             modelBuilder.Entity("drink_finder_restapi.Domain.Models.Establishment", b =>
                 {
                     b.Navigation("establishemntDrinks");
+                });
+
+            modelBuilder.Entity("drink_finder_restapi.Domain.Models.User", b =>
+                {
+                    b.Navigation("establishments");
                 });
 #pragma warning restore 612, 618
         }

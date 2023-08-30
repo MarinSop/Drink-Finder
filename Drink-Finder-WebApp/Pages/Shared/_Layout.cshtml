@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Drink_Finder_WebApp.styles.css" asp-append-version="true" />
+    @RenderSection("Styles", false)
 </head>
 <body>
     <header>
@@ -22,9 +23,27 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
+                        @if (Context.Request.Cookies.TryGetValue("jwtToken", out var token) && !string.IsNullOrEmpty(token))
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/establishments">My establishments</a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/AddEstablishments">Add new establishments</a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/logout">Log out</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/login">Login</a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/register">Register</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

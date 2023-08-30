@@ -2,8 +2,7 @@
 @using Drink_Finder_WebApp.Models;
 @model Drink_Finder_WebApp.Pages.IndexModel
 @{
-
-    <div>
+    <div class="index">
     @{
             var queryParam = Request.Query["query"];
             var cityFilterParam = Request.Query["cityFilter"];
@@ -39,7 +38,7 @@
     }
 
     <form method="post">
-        <input type="text"  name="query"/>
+            <input type="text" name="query" placeholder="Enter establishment or drink name" />
         <select name="city-filter">
             <option selected value="">No city filter</option>
             @foreach(City city in Model.cities)
@@ -102,7 +101,7 @@
                         <td>@establishment.city.name</td>
                         <td>@establishment.address</td>
                         <td>
-                            <a href="/drinks/@establishment.id">Show drink list</a>
+                            <a class="button" href="/drinks/@establishment.id">Show drink list</a>
                         </td>
                     </tr>                    
                 }                    
@@ -136,4 +135,7 @@
             <a href="/?@urlParamsString&pageNumber=@Model.totalPages">Last</a>
         </div>
     </div>
+    @section Styles{
+        <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+    }
 }

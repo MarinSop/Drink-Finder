@@ -57,7 +57,7 @@ namespace drink_finder_restapi.Persistence.Repositories
             return await establishments.ToListAsync();
         }
 
-        public async Task<IEnumerable<Establishment>> pageSearchAsync(int pageNumber, int pageSize, string query, string cityFilter, string sortBy, string sort)
+        public async Task<IEnumerable<Establishment>> pageSearchAsync(string query, string cityFilter, string sortBy, string sort)
         {
             var establishments = from e in _context.establishments select e;
             establishments = _context.establishments

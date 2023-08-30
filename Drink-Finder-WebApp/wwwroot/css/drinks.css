@@ -1,0 +1,50 @@
+﻿.drink-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+    .drink-table th,
+    .drink-table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+    }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+    .pagination a {
+        margin: 0 5px;
+        padding: 5px 10px;
+        text-decoration: none;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        color: #333;
+    }
+
+        .pagination a:hover {
+            background-color: #f0f0f0;
+        }
+
+.categories-select {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.category-button {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+    .category-button:hover {
+        background-color: #0056b3;
+    }

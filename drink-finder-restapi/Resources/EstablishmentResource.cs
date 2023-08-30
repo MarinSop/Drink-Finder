@@ -7,6 +7,7 @@ namespace drink_finder_restapi.Resources
         public int Id { get; set; }
         public string? Name { get; set; }
         public string? Address { get; set; }
-        public CityResource? city { get; set; }
+        public int CityId { get; set; }
+        public CityResource? city { get; set; } 
     }
 }

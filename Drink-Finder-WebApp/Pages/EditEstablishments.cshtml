@@ -1,0 +1,28 @@
+﻿@page "/edit-establishment/{establishmentId:int}"
+@model Drink_Finder_WebApp.Pages.EditEstablishmentsModel
+@{
+    <div class="form-container">
+    <h1>Edit establishment</h1>
+        <form method="post" class="edit-establishment-form">
+        <input type="text" name="name" value="@Model.establishment.name" placeholder="Enter establishment name" required>
+        <select name="city-select" required>
+            @foreach (var city in Model.cities)
+            {
+                @if(Model.establishment.cityId == city.id)
+                {
+                    <option value="@city.id" selected>@city.name</option>
+                }
+                else
+                {
+                    <option value="@city.id">@city.name</option>
+                }
+            }
+        </select>
+        <input type="text" name="address" value="@Model.establishment.address" placeholder="Enter establishment address" required>
+        <input type="submit" value="Submit">
+    </form>
+    </div>
+    @section Styles{
+        <link rel="stylesheet" href="~/css/editestablishment.css" asp-append-version="true" />
+    }
+}

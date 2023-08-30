@@ -22,7 +22,7 @@ namespace Drink_Finder_WebApp.Pages
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task OnGet(int pageNumber = 1, int pageSize = 1, string query = "", string cityFilter = "", string sortBy = "name", string sort = "asc")
+        public async Task OnGet(int pageNumber = 1, int pageSize = 6, string query = "", string cityFilter = "", string sortBy = "name", string sort = "asc")
         {
             pgNum = pageNumber;
             pgSize = pageSize;

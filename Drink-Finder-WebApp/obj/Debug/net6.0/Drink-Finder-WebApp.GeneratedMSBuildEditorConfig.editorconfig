@@ -16,20 +16,52 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\GIT\Drink-Finder\Drink-Finder-WebApp
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/GIT/Drink-Finder/Drink-Finder-WebApp/Pages/AddEstablishments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkRXN0YWJsaXNobWVudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/GIT/Drink-Finder/Drink-Finder-WebApp/Pages/DeleteDrinks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsZXRlRHJpbmtzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/GIT/Drink-Finder/Drink-Finder-WebApp/Pages/DeleteEstablishment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsZXRlRXN0YWJsaXNobWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/GIT/Drink-Finder/Drink-Finder-WebApp/Pages/Drinks.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRHJpbmtzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/GIT/Drink-Finder/Drink-Finder-WebApp/Pages/EditDrinks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdERyaW5rcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/GIT/Drink-Finder/Drink-Finder-WebApp/Pages/EditEstablishments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdEVzdGFibGlzaG1lbnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/GIT/Drink-Finder/Drink-Finder-WebApp/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/GIT/Drink-Finder/Drink-Finder-WebApp/Pages/Establishments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0YWJsaXNobWVudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/GIT/Drink-Finder/Drink-Finder-WebApp/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/GIT/Drink-Finder/Drink-Finder-WebApp/Pages/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+[C:/GIT/Drink-Finder/Drink-Finder-WebApp/Pages/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/GIT/Drink-Finder/Drink-Finder-WebApp/Pages/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/GIT/Drink-Finder/Drink-Finder-WebApp/Pages/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/GIT/Drink-Finder/Drink-Finder-WebApp/Pages/Shared/_ValidationScriptsPartial.cshtml]

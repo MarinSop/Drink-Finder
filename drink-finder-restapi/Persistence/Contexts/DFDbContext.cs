@@ -11,6 +11,7 @@ namespace drink_finder_restapi.Persistence.Contexts
         public DbSet<DrinkCategory> drinkCategories { get; set; }
         public DbSet<Drink> drinks { get; set; }
         public DbSet<City> cities { get; set; }
+        public DbSet<User> users { get; set; }
         public DbSet<Establishment> establishments { get; set; }
         public DbSet<EstablishmentDrink> establishmentDrinks { get; set; }
 
@@ -39,6 +40,10 @@ namespace drink_finder_restapi.Persistence.Contexts
                 .HasOne(e => e.City)
                 .WithMany(c => c.Establishments)
                 .HasForeignKey(e => e.CityId);
+            modelBuilder.Entity<Establishment>()
+                .HasOne(e => e.User)
+                .WithMany(u => u.establishments)
+                .HasForeignKey(e => e.UserId);
 
             // EstablishmentDrink
             modelBuilder.Entity<EstablishmentDrink>()

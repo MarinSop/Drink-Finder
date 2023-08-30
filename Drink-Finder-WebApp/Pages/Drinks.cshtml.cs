@@ -39,12 +39,6 @@ namespace Drink_Finder_WebApp.Pages
                 drinkList = drinkPage.items;
                 totalItems = drinkPage.totalItems;
                 totalPages = drinkPage.totalPages;
-                foreach(var drink in drinkList)
-                {
-                    Console.WriteLine(drink.name);
-                }
-                Console.WriteLine(totalPages);
-                Console.WriteLine(totalItems);
             }
 
             HttpResponseMessage categoryResponse = await httpClient.GetAsync("https://localhost:7082/api/drinkcategories");

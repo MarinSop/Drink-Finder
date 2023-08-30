@@ -9,5 +9,7 @@
         public int CityId { get; set; }
         public City? City { get; set; }
         public List<EstablishmentDrink> establishemntDrinks { get; } = new();
+        public int UserId { get; set; }
+        public User? User { get; set; }
     }
 }

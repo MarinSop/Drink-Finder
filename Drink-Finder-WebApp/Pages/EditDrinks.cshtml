@@ -1,0 +1,158 @@
+﻿@page "/edit-drinks/{establishmentId:int}"
+@model Drink_Finder_WebApp.Pages.EditDrinksModel
+@{
+    <div>
+        @{
+            var categoryParam = Request.Query["category"];
+            var sortByParam = Request.Query["sortBy"];
+            var sortParam = Request.Query["sort"];
+
+            var urlParams = new List<string>();
+            string categoryParamUrl = "";
+
+            if (!string.IsNullOrWhiteSpace(categoryParam))
+            {
+                urlParams.Add($"category={categoryParam}");
+                categoryParamUrl = "category=" + categoryParam;
+            }
+
+            if (!string.IsNullOrWhiteSpace(sortByParam))
+            {
+                urlParams.Add($"sortBy={sortByParam}");
+            }
+
+            if (!string.IsNullOrWhiteSpace(sortParam))
+            {
+                urlParams.Add($"sort={sortParam}");
+            }
+
+            var urlParamsString = string.Join("&", urlParams);
+        }
+        <h1>Edit drinks</h1>
+        <div class="form-container">
+        <div class="add-drink">
+            <form method="post" class="add-drink-form">
+                <select id="drinkCategory" name="category-select" onchange="updateDrinkSelection()">
+                <option selected>Select a category</option>
+                @foreach(var category in Model.categories)
+                    {
+                        <option value="@category.id">@category.name</option>
+                    }
+                </select>
+
+                <select id="drinkSelection" name="drink-select">
+                <option selected value="-1">Select a drink</option>
+                </select>
+                <label for="price">Enter price</label>
+                <input type="number" value="0" name="price" min="0">
+                <input type="submit" value="Add">
+            </form>
+        </div>
+        </div>
+
+        <div class="categories-select">
+            <a class="category-button" href="@Model.establishmentId">All</a>
+            @foreach (var category in Model.categories)
+            {
+                <a class="category-button" href="@Model.establishmentId?category=@category.id">@category.name</a>
+            }
+        </div>
+        <table class="drink-table">
+            <thead>
+                <tr>
+                    <th>
+                        @if (sortByParam == "name" && sortParam == "asc")
+                        {
+                            <a href="/edit-drinks/@Model.establishmentId?sortBy=name&sort=desc&@categoryParamUrl&pageNumber=@Model.pgNum">Name</a>
+                        }
+                        else
+                        {
+                            <a href="/edit-drinks/@Model.establishmentId?sortBy=name&sort=asc&@categoryParamUrl&pageNumber=@Model.pgNum">Name</a>
+                        }
+                    </th>
+                    <th>
+                        @if (sortByParam == "volume" && sortParam == "asc")
+                        {
+                            <a href="/edit-drinks/@Model.establishmentId?sortBy=volume&sort=desc&@categoryParamUrl&pageNumber=@Model.pgNum">Volume</a>
+                        }
+                        else
+                        {
+                            <a href="/edit-drinks/@Model.establishmentId?sortBy=volume&sort=asc&@categoryParamUrl&pageNumber=@Model.pgNum">Volume</a>
+                        }
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.drinkList != null)
+                {
+                    @foreach (var drink in Model.drinkList)
+                    {
+                        <tr>
+                            <td>@drink.name</td>
+                            <td>@drink.volume</td>
+                            <td><a href="/delete-drinks/@drink.id/establishments/@Model.establishmentId">Delete</a></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <div class="pagination">
+            <a href="/edit-drinks/@Model.establishmentId?@urlParamsString">First</a>
+
+            @if (Model.pgNum - 2 > 0)
+            {
+                <a href="/edit-drinks/@Model.establishmentId?@urlParamsString&pageNumber=@(Model.pgNum-2)">@(Model.pgNum - 2)</a>
+            }
+            @if (Model.pgNum - 1 > 0)
+            {
+                <a href="/edit-drinks/@Model.establishmentId?@urlParamsString&pageNumber=@(Model.pgNum-1)">@(Model.pgNum - 1)</a>
+            }
+
+            <a href="/edit-drinks/@Model.establishmentId?@urlParamsString&pageNumber=@Model.pgNum">@Model.pgNum</a>
+
+            @if (Model.pgNum + 1 <= Model.totalPages)
+            {
+                <a href="/edit-drinks/@Model.establishmentId?@urlParamsString&pageNumber=@(Model.pgNum+1)">@(Model.pgNum + 1)</a>
+            }
+            @if (Model.pgNum + 2 <= Model.totalPages)
+            {
+                <a href="/edit-drinks/@Model.establishmentId?@urlParamsString&pageNumber=@(Model.pgNum+2)">@(Model.pgNum + 2)</a>
+            }
+
+            <a href="/edit-drinks/@Model.establishmentId?@urlParamsString&pageNumber=@Model.totalPages">Last</a>
+        </div>
+    </div>
+     
+    @section Scripts
+    {
+        <script>
+            function updateDrinkSelection() {
+                var categorySelect = document.getElementById("drinkCategory");
+                var drinkSelect = document.getElementById("drinkSelection");
+                var allDrinks = @Json.Serialize(Model.allDrinks);
+
+                drinkSelect.innerHTML = "";
+                var optionDefault = document.createElement("option");
+                optionDefault.text = "Select a drink";
+                optionDefault.selected = true;
+                optionDefault.value = -1;
+                drinkSelect.add(optionDefault);
+
+                var selectedCategory = categorySelect.value;
+                var categoryDrinks = allDrinks.filter(drink => drink.drinkCategoryId == selectedCategory);
+
+                for (var i = 0; i < categoryDrinks.length; i++) {
+                    var option = document.createElement("option");
+                    option.text = categoryDrinks[i].name + " " + categoryDrinks[i].volume + "l";
+                    option.value = categoryDrinks[i].id;
+                    drinkSelect.add(option);
+                }
+            }
+        </script>
+    }
+    @section Styles{
+        <link rel="stylesheet" href="~/css/editdrinks.css" asp-append-version="true" />
+    }
+}
+

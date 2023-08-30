@@ -1,0 +1,22 @@
+﻿@page "/add-establishment"
+@model Drink_Finder_WebApp.Pages.AddEstablishmentsModel
+@{
+    <div class="form-container">
+    <h1>Add new establishment</h1>
+        <form method="post" class="add-establishment-form">
+            <input type="text" name="name" placeholder="Enter establishment name" required>
+            <select name="city-select" required>
+            <option selected value="-1">Select a city</option>
+                @foreach(var city in Model.cities)
+                {
+                    <option value="@city.id">@city.name</option>
+                }
+            </select>
+            <input type="text" name="address" placeholder="Enter establishment address" required>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    @section Styles{
+        <link rel="stylesheet" href="~/css/addestablishment.css" asp-append-version="true" />
+    }
+}

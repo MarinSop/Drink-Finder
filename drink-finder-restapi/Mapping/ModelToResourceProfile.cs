@@ -12,6 +12,8 @@ namespace drink_finder_restapi.Mapping
             CreateMap<Establishment, EstablishmentResource>();
             CreateMap<City, CityResource>();
             CreateMap<DrinkCategory, DrinkCategoryResource>();
+            CreateMap<EstablishmentDrink, EstablishmentDrinkResource>();
+            CreateMap<User, UserResource>();
         }
     }
 }

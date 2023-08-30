@@ -39,7 +39,7 @@
                 <a class="category-button" href="@Model.establishmentId?category=@category.id">@category.name</a>
             }
         </div>
-        <table>
+        <table class="drink-table">
             <thead>
                 <tr>
                     <th>
@@ -103,4 +103,8 @@
             <a href="/drinks/@Model.establishmentId?@urlParamsString&pageNumber=@Model.totalPages">Last</a>
         </div>
     </div>
+
+    @section Styles{
+        <link rel="stylesheet" href="~/css/drinks.css" asp-append-version="true" />
+    }
 }
